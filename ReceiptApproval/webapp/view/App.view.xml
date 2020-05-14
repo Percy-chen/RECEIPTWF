@@ -1,0 +1,235 @@
+<mvc:View controllerName="ReceiptApproval.controller.App" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" displayBlock="true" busy="{/appProperties/busy}"
+	busyIndicatorDelay="0">
+	<App id="idAppControl">
+		<pages>
+			<Page title="{data>/task/title}" showHeader="false" showFooter="false">
+				<content>
+					<f:Form editable="true">
+						<f:layout>
+							<f:ResponsiveGridLayout labelSpanL="3" labelSpanM="3" emptySpanL="0" emptySpanM="0" columnsL="3" columnsM="2"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement>
+										<f:fields>
+											<l:HorizontalLayout>
+												<Text text="{i18n>Flow}:" width="6em" textAlign="Begin"/>
+												<Text id="Flow" text="{data>/context/FLOW}"/>
+											</l:HorizontalLayout>
+											<l:HorizontalLayout>
+												<Text text="{i18n>ApplicationDate}:" width="6em" textAlign="Begin"/>
+												<Text id="ApplicationDate" text="{path:'data>/context/APPLICATIONDATE'}"/>
+											</l:HorizontalLayout>
+											<l:HorizontalLayout>
+												<Text text="{i18n>Applicant}:" width="6em" textAlign="Begin"/>
+												<Text id="Applicant" text="{data>/context/APPLICANT}"/>
+												<Text text="{data>/context/APPLICANTNAME}"/>
+											</l:HorizontalLayout>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<l:HorizontalLayout>
+												<Text text="{i18n>CompanyCode}:" width="6em" textAlign="Begin"/>
+												<Text id="CompanyCode" text="{data>/context/COMPANYCODE}" width="4em"/>
+												<Text text="{data>/context/COMPANYNAME}"/>
+											</l:HorizontalLayout>
+											<l:HorizontalLayout>
+												<Text text="{i18n>BankAccount}:" width="6em" textAlign="Begin"/>
+												<Text id="BankAccount" text="{data>/context/BANKACCOUNT}" width="8em"/>
+												<Text text="{data>/context/BANKACCOUNTDES}"/>
+											</l:HorizontalLayout>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<l:HorizontalLayout>
+												<Text text="{i18n>Customer}:" width="6em" textAlign="Begin"/>
+												<Text id="Customer" text="{data>/context/CUSTOMER}" width="6em"/>
+												<Text text="{data>/context/CUSTOMERNAME}"/>
+											</l:HorizontalLayout>
+											<l:HorizontalLayout>
+												<Text text="{i18n>Saleman}:" width="6em" textAlign="Begin"/>
+												<Text id="Saleman" text="{data>/context/SALEMAN}" width="12em"/>
+											</l:HorizontalLayout>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<l:HorizontalLayout>
+												<Text text="{i18n>Assignment}:" width="6em" textAlign="Begin"/>
+												<Text id="Assignment" text="{data>/context/ASSIGNMENT}"/>
+											</l:HorizontalLayout>
+											<!--<l:HorizontalLayout>
+												<Text text="{i18n>oneTimeCustomer}:" width="6em" textAlign="Begin"/>
+												<Text id="ONETIMECUSTOMER" text="{data>/context/ONETIMECUSTOMER}" width="4em"/>
+											</l:HorizontalLayout>
+											<l:HorizontalLayout>
+												<Text text="{i18n>oneTimeCustomerName}:" width="6em" textAlign="Begin"/>
+												<Text id="ONETIMECUSTOMERNAME" text="{data>/context/ONETIMECUSTOMERNAME}"/>
+											</l:HorizontalLayout>-->
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<l:HorizontalLayout>
+												<Text text="{i18n>NetDueDate}:" width="6em" textAlign="Begin"/>
+												<Text id="NetDueDate" text="{path:'data>/context/NETDUEDATE'}"/>
+											</l:HorizontalLayout>
+											<l:HorizontalLayout>
+												<Text text="{i18n>BillNumber}:" width="6em" textAlign="Begin"/>
+												<Text id="BILLNUMBER" text="{data>/context/BILLNUMBER}"/>
+											</l:HorizontalLayout>
+											<l:HorizontalLayout>
+												<Text text="{i18n>Currency}:" width="3em" textAlign="Begin"/>
+												<!--<ComboBox showSecondarytexts="true" id="Currency" items="{ path: '/CurrencyList', sorter: { path: 'Currency' } }"-->
+												<!--	selectionChange="onChangeCurr" width="6em" editable="false">-->
+												<!--	<core:ListItem key="{key}" text="{Currency}" additionalText="{CurrencyName}"/>-->
+												<!--	<layoutData>-->
+												<!--		<l:GridData span="L2 M2 S2"/>-->
+												<!--	</layoutData>-->
+												<!--</ComboBox>-->
+												<Text id="Currency" text="{data>/context/CURRENCY}" width="3em">
+													<layoutData>
+														<l:GridData span="L2 M2 S2"/>
+													</layoutData>
+												</Text>
+												<Text text="/{i18n>Rate}:" textAlign="Center" width="4em"/>
+												<Text id="Rate" text="{data>/context/RATE}" width="4em"/>
+											</l:HorizontalLayout>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<l:HorizontalLayout>
+												<Text text="{i18n>ReceivingAmountTrans}:" width="6em" textAlign="Begin"/>
+												<Text id="ReceivingAmountTrans" text="{path:'data>/context/RAMOUNTT',type: 'sap.ui.model.type.Float'}"/>
+											</l:HorizontalLayout>
+											<l:HorizontalLayout>
+												<Text text="{i18n>ReceivingAmountLocal}:" width="6em" textAlign="Begin"/>
+												<Text id="ReceivingAmountLocal" text="{path:'data>/context/RAMOUNTL',type: 'sap.ui.model.type.Float'}"/>
+											</l:HorizontalLayout>
+											<l:HorizontalLayout>
+												<Text text="{i18n>CurrUpperCase}:" width="6em" textAlign="Begin"/>
+												<Text id="CurrUpperCase1" text="{data>/context/CurrUpperCase1}"/>
+											</l:HorizontalLayout>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<l:HorizontalLayout>
+												<Text text="{i18n>ChargeInlandTrans}:" width="6em" textAlign="Begin"/>
+												<Text id="ChargeInlandTrans" text="{path:'data>/context/CHARGEINLANDT',type: 'sap.ui.model.type.Float'}"/>
+											</l:HorizontalLayout>
+											<l:HorizontalLayout>
+												<Text text="{i18n>ChargeInlandLocal}:" width="6em" textAlign="Begin"/>
+												<Text id="ChargeInlandLocal" text="{path:'data>/context/CHARGEINLANDL',type: 'sap.ui.model.type.Float'}"/>
+											</l:HorizontalLayout>
+											<l:HorizontalLayout>
+												<Text text="{i18n>CurrUpperCase}:" width="6em" textAlign="Begin"/>
+												<Text id="CurrUpperCase2" text="{data>/context/CurrUpperCase2}"/>
+											</l:HorizontalLayout>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<l:HorizontalLayout>
+												<Text text="{i18n>ChargeForeignTrans}:" width="6em" textAlign="Begin"/>
+												<Text id="ChargeForeignTrans" text="{path:'data>/context/CHARGEFOREIGNT',type: 'sap.ui.model.type.Float'}"/>
+											</l:HorizontalLayout>
+											<l:HorizontalLayout>
+												<Text text="{i18n>ChargeForeignLocal}:" width="6em" textAlign="Begin"/>
+												<Text id="ChargeForeignLocal" text="{path:'data>/context/CHARGEFOREIGNL',type: 'sap.ui.model.type.Float'}"/>
+											</l:HorizontalLayout>
+											<l:HorizontalLayout>
+												<Text text="{i18n>CurrUpperCase}:" width="6em" textAlign="Begin"/>
+												<Text id="CurrUpperCase3" text="{data>/context/CurrUpperCase3}"/>
+											</l:HorizontalLayout>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<l:HorizontalLayout>
+												<Text text="{i18n>PostageExpense}:" width="6em" textAlign="Begin"/>
+												<Text id="PostageExpense" text="{path:'data>/context/POSTAGEEXPENSE',type: 'sap.ui.model.type.Float'}"/>
+											</l:HorizontalLayout>
+											<l:HorizontalLayout>
+												<Text text="{i18n>ChargeInlandLocal}:" width="6em" textAlign="Begin"/>
+												<Text id="PostageExpenseL" text="{path:'data>/context/POSTAGEEXPENSEL',type: 'sap.ui.model.type.Float'}"/>
+											</l:HorizontalLayout>
+											<l:HorizontalLayout>
+												<Text text="{i18n>CurrUpperCase}:" width="6em" textAlign="Begin"/>
+												<Text id="CurrUpperCase4" text="{data>/context/CurrUpperCase4}"/>
+											</l:HorizontalLayout>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement visible="{/appProperties/visible}">
+										<f:fields>
+											<l:HorizontalLayout>
+												<Text text="{i18n>PostingDate}:" width="6em" textAlign="Begin"/>
+												<DatePicker id="PostingDate" value="{path:'data>/context/PostingDate'}" width="10.8em" valueFormat="yyyy-MM-dd" placeholder=" "
+													displayFormat="yyyy-MM-dd"/>
+												<!--<Input id="PostingDate" value="{path:'data>/context/PostingDate',type: 'sap.ui.model.type.Float'}"/>-->
+											</l:HorizontalLayout>
+											<l:HorizontalLayout>
+												<Text text="{i18n>DocumentDate}:" width="6em" textAlign="Begin"/>
+												<DatePicker id="DocumentDate" value="{path:'data>/context/DocumentDate'}" width="10.8em" valueFormat="yyyy-MM-dd" placeholder=" "
+													displayFormat="yyyy-MM-dd"/>
+												<!--<Input id="DocumentDate" value="{path:'data>/context/DocumentDate',type: 'sap.ui.model.type.Float'}"/>-->
+											</l:HorizontalLayout>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<l:HorizontalLayout>
+												<Text text="{i18n>Note}:" width="6em" textAlign="Begin"/>
+												<Text id="Note" text="{data>/context/NOTE}" width="30em"/>
+											</l:HorizontalLayout>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form editable="true">
+						<f:layout>
+							<f:ResponsiveGridLayout labelSpanL="3" labelSpanM="3" emptySpanL="0" emptySpanM="0" columnsL="3" columnsM="2"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement>
+										<f:fields>
+											<l:HorizontalLayout>
+												<Text text="{i18n>Manager}:" width="6em" textAlign="Begin"/>
+												<Text id="Manager" text="{data>/context/MANAGER}"/>
+											</l:HorizontalLayout>
+											<l:HorizontalLayout>
+												<Text text="{i18n>Opinion}:" width="6em" textAlign="Begin"/>
+												<Input id="RESULT" value="{data>/context/RESULT}"/>
+											</l:HorizontalLayout>
+											<l:HorizontalLayout></l:HorizontalLayout>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<UploadCollection id="UploadCollectionAttach" multiple="true" change="onChange" fileDeleted="onFileDeleted" fileType="{fileTypes>/selected}"
+						selectionChange="onSelectionChange" typeMissmatch="onTypeMissmatch" uploadComplete="onUploadComplete"
+						beforeUploadStarts="onBeforeUploadStarts" uploadTerminated="onUploadTerminated" items="{Attach>DocumentInfoRecordToAttachmentNavigation}"
+						showSeparators="{settings>/showSeparators}" uploadEnabled="false" mode="{settings>/mode}" uploadButtonInvisible="true"
+						numberOfAttachmentsText="附件">
+						<items>
+							<UploadCollectionItem documentId="{Attach>ArchiveDocumentID}" fileName="{Attach>FileName}" mimeType="{Attach>MimeType}"
+								url="{path:'Attach>__metadata/media_src',formatter:'.getMediaUrl'}" enableEdit="false" enableDelete="false"
+								visibleDelete="{settings>/visibleDelete}" visibleEdit="{settings>/visibleEdit}" deletePress="ondeletePress"></UploadCollectionItem>
+						</items>
+					</UploadCollection>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

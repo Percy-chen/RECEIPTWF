@@ -1,0 +1,208 @@
+<mvc:View controllerName="ReceiptSubmit.controller.App" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" displayBlock="true" busy="{/appProperties/busy}"
+	busyIndicatorDelay="0">
+	<App id="idAppControl">
+		<Page id="page" showHeader="false">
+			<content>
+				<f:Form editable="true">
+					<f:layout>
+						<f:ResponsiveGridLayout labelSpanL="3" labelSpanM="3" emptySpanL="0" emptySpanM="0" columnsL="3" columnsM="2"/>
+					</f:layout>
+					<f:formContainers>
+						<f:FormContainer>
+							<f:formElements>
+								<f:FormElement>
+									<f:fields>
+										<l:HorizontalLayout>
+											<Text text="{i18n>Flow}:" width="6em" textAlign="Begin"/>
+											<Input id="Flow" value="{data>/context/FLOW}" editable="false"/>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout>
+											<Text text="{i18n>ApplicationDate}:" width="6em" textAlign="Begin"/>
+											<DatePicker id="ApplicationDate" value="{path:'data>/context/APPLICATIONDATE',formatter:'.formatDate'}" width="8em" valueFormat="yyyyMMdd"
+												displayFormat="yyyy-MM-dd" placeholder=" " editable="false"/>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout>
+											<Text text="{i18n>Applicant}:" width="6em" textAlign="Begin"/>
+											<Input id="Applicant" value="{data>/context/APPLICANT}" editable="false"/>
+											<Text text="{data>/context/APPLICANTNAME}"/>
+										</l:HorizontalLayout>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement>
+									<f:fields>
+										<l:HorizontalLayout>
+											<Text text="{i18n>CompanyCode}:" width="6em" textAlign="Begin"/>
+											<Input id="CompanyCode" value="{data>/context/COMPANYCODE}" editable="false" width="5em"/>
+											<Text text="{data>/context/COMPANYNAME}"/>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout>
+											<Text text="{i18n>BankAccount}:" width="6em" textAlign="Begin"/>
+											<Input id="BankAccount" value="{data>/context/BANKACCOUNT}" width="10em" showValueHelp="true" valueHelpRequest="onSearchBankAccount"
+												valueHelpOnly="false"/>
+											<Text text="{data>/context/BANKACCOUNTDES}"/>
+										</l:HorizontalLayout>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement>
+									<f:fields>
+										<l:HorizontalLayout>
+											<Text text="{i18n>Customer}:" width="6em" textAlign="Begin"/>
+											<Input id="Customer" value="{data>/context/CUSTOMER}" width="8em" showValueHelp="true" valueHelpRequest="onSearchCustomer"
+												valueHelpOnly="false" change="handleChangeC"/>
+											<Text text="{data>/context/CUSTOMERNAME}"/>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout>
+											<Text text="{i18n>Saleman}:" width="6em" textAlign="Begin"/>
+											<Input id="Saleman" value="{data>/context/SALEMAN}" width="12em"/>
+										</l:HorizontalLayout>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement>
+									<f:fields>
+										<l:HorizontalLayout>
+											<Text text="{i18n>Assignment}:" width="6em" textAlign="Begin"/>
+											<Input id="Assignment" value="{data>/context/ASSIGNMENT}"/>
+										</l:HorizontalLayout>
+										<!--<l:HorizontalLayout>-->
+										<!--	<Text text="{i18n>oneTimeCustomer}:" width="6em" textAlign="Begin"/>-->
+										<!--	<Input id="ONETIMECUSTOMER" value="{data>/context/ONETIMECUSTOMER}" editable="false" width="4em"/>-->
+										<!--</l:HorizontalLayout>-->
+										<!--<l:HorizontalLayout>-->
+										<!--	<Text text="{i18n>oneTimeCustomerName}:" width="6em" textAlign="Begin"/>-->
+										<!--	<Input id="ONETIMECUSTOMERNAME" value="{data>/context/ONETIMECUSTOMERNAME}" showValueHelp="true" valueHelpRequest="onSearchCustomer"-->
+										<!--		valueHelpOnly="false"/>-->
+										<!--</l:HorizontalLayout>-->
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement>
+									<f:fields>
+										<l:HorizontalLayout>
+											<Text text="{i18n>NetDueDate}:" width="6em" textAlign="Begin"/>
+											<DatePicker id="NetDueDate" value="{data>/context/NETDUEDATE}" width="10.8em" valueFormat="yyyyMMdd" placeholder=" "
+												displayFormat="yyyy-MM-dd"/>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout>
+											<Text text="{i18n>BillNumber}:" width="6em" textAlign="Begin"/>
+											<Input id="BILLNUMBER" value="{data>/context/BILLNUMBER}"/>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout>
+											<Text text="{i18n>Currency}:" width="3em" textAlign="Begin"/>
+											<!--<ComboBox showSecondaryValues="true" id="Currency" items="{ path: '/CurrencyList', sorter: { path: 'Currency' } }"-->
+											<!--	selectionChange="onChangeCurr" width="6em">-->
+											<!--	<core:ListItem key="{key}" text="{Currency}" additionalText="{CurrencyName}"/>-->
+											<!--	<layoutData>-->
+											<!--		<l:GridData span="L2 M2 S2"/>-->
+											<!--	</layoutData>-->
+											<!--</ComboBox>-->
+											<Input id="Currency" value="{data>/context/CURRENCY}" width="5em" showValueHelp="true" valueHelpRequest="onSearchCurrency"
+												valueHelpOnly="false" submit="changeENCY">
+												<layoutData>
+													<l:GridData span="L2 M2 S2"/>
+												</layoutData>
+											</Input>
+											<Text text="{i18n>Rate}:" textAlign="Center" width="4em"/>
+											<Input id="Rate" value="{data>/context/RATE}" width="5em"/>
+										</l:HorizontalLayout>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement>
+									<f:fields>
+										<l:HorizontalLayout>
+											<Text text="{i18n>ReceivingAmountTrans}:" width="6em" textAlign="Begin"/>
+											<Input id="ReceivingAmountTrans" value="{path:'data>/context/RAMOUNTT',type: 'sap.ui.model.type.Float'}" change="changeMoneyToChinese"/>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout>
+											<Text text="{i18n>ReceivingAmountLocal}:" width="6em" textAlign="Begin"/>
+											<Input id="ReceivingAmountLocal" value="{path:'data>/context/RAMOUNTL',type: 'sap.ui.model.type.Float'}"/>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout>
+											<Text text="{i18n>CurrUpperCase}:" width="6em" textAlign="Begin"/>
+											<Input id="CurrUpperCase1" value="{data>/context/CurrUpperCase1}"/>
+										</l:HorizontalLayout>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement>
+									<f:fields>
+										<l:HorizontalLayout>
+											<Text text="{i18n>ChargeInlandTrans}:" width="6em" textAlign="Begin"/>
+											<Input id="ChargeInlandTrans" value="{path:'data>/context/CHARGEINLANDT',type: 'sap.ui.model.type.Float'}" change="changeMoneyToChinese"/>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout>
+											<Text text="{i18n>ChargeInlandLocal}:" width="6em" textAlign="Begin"/>
+											<Input id="ChargeInlandLocal" value="{path:'data>/context/CHARGEINLANDL',type: 'sap.ui.model.type.Float'}"/>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout>
+											<Text text="{i18n>CurrUpperCase}:" width="6em" textAlign="Begin"/>
+											<Input id="CurrUpperCase2" value="{data>/context/CurrUpperCase2}"/>
+										</l:HorizontalLayout>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement>
+									<f:fields>
+										<l:HorizontalLayout>
+											<Text text="{i18n>ChargeForeignTrans}:" width="6em" textAlign="Begin"/>
+											<Input id="ChargeForeignTrans" value="{path:'data>/context/CHARGEFOREIGNT',type: 'sap.ui.model.type.Float'}" change="changeMoneyToChinese"/>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout>
+											<Text text="{i18n>ChargeForeignLocal}:" width="6em" textAlign="Begin"/>
+											<Input id="ChargeForeignLocal" value="{path:'data>/context/CHARGEFOREIGNL',type: 'sap.ui.model.type.Float'}"/>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout>
+											<Text text="{i18n>CurrUpperCase}:" width="6em" textAlign="Begin"/>
+											<Input id="CurrUpperCase3" value="{data>/context/CurrUpperCase3}"/>
+										</l:HorizontalLayout>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement>
+									<f:fields>
+										<l:HorizontalLayout>
+											<Text text="{i18n>PostageExpense}:" width="6em" textAlign="Begin"/>
+											<Input id="PostageExpense" value="{path:'data>/context/POSTAGEEXPENSE',type: 'sap.ui.model.type.Float'}" change="changeMoneyToChinese"/>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout>
+											<Text text="{i18n>ChargeInlandLocal}:" width="6em" textAlign="Begin"/>
+											<Input id="PostageExpenseL" value="{path:'data>/context/POSTAGEEXPENSEL',type: 'sap.ui.model.type.Float'}"/>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout>
+											<Text text="{i18n>CurrUpperCase}:" width="6em" textAlign="Begin"/>
+											<Input id="CurrUpperCase4" value="{data>/context/CurrUpperCase4}"/>
+										</l:HorizontalLayout>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement>
+									<f:fields>
+										<l:HorizontalLayout>
+											<Text text="簽核意見:" width="6em" textAlign="Begin"/>
+											<Text id="RESULT" text="{data>/context/RESULT}" width="30em"/>
+										</l:HorizontalLayout>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement>
+									<f:fields>
+										<l:HorizontalLayout>
+											<Text text="{i18n>Note}:" width="6em" textAlign="Begin"/>
+											<Input id="Note" value="{data>/context/NOTE}" width="30em"/>
+										</l:HorizontalLayout>
+									</f:fields>
+								</f:FormElement>
+							</f:formElements>
+						</f:FormContainer>
+					</f:formContainers>
+				</f:Form>
+				<UploadCollection id="UploadCollectionAttach" multiple="true" change="onChange" fileDeleted="onFileDeleted" fileType="{fileTypes>/selected}"
+					selectionChange="onSelectionChange" typeMissmatch="onTypeMissmatch" uploadComplete="onUploadComplete"
+					beforeUploadStarts="onBeforeUploadStarts" uploadTerminated="onUploadTerminated" items="{Attach>DocumentInfoRecordToAttachmentNavigation}"
+					showSeparators="{settings>/showSeparators}" uploadEnabled="true" mode="{settings>/mode}" instantUpload="false"
+					uploadUrl="/destinations/WT_S4HC/API_CV_ATTACHMENT_SRV/AttachmentContentSet">
+					<items>
+						<UploadCollectionItem documentId="{Attach>ArchiveDocumentID}" fileName="{Attach>FileName}" mimeType="{Attach>MimeType}"
+							url="{path:'Attach>__metadata/media_src',formatter:'.getMediaUrl'}" enableEdit="{settings>/enableEdit}"
+							enableDelete="{settings>/enableDelete}" visibleDelete="{settings>/visibleDelete}" visibleEdit="{settings>/visibleEdit}"
+							deletePress="ondeletePress"></UploadCollectionItem>
+					</items>
+				</UploadCollection>
+			</content>
+		</Page>
+	</App>
+</mvc:View>
